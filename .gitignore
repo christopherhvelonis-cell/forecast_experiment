@@ -1,0 +1,9 @@
+
+# Ignore accidental CLI captures
+/( 
+/)
+/cd
+/echo
+/pd.DataFrame
+/python
+/type
