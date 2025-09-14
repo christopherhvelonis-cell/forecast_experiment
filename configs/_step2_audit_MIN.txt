@@ -1,0 +1,31 @@
+@echo off
+setlocal EnableDelayedExpansion
+
+set IND=configs\indicators.yml
+set BAS=configs\baselines.yml
+set OUT=configs\_step2_audit_MIN.txt
+
+if not exist "%IND%" (echo [ERROR] Missing %IND% & exit /b 1)
+if not exist "%BAS%" (echo [ERROR] Missing %BAS% & exit /b 1)
+
+> "%OUT%" (
+  echo # Step 2 Audit - MIN (Batch)
+  echo.
+  echo **Indicators file:** %IND%
+  echo **Baselines file:**  %BAS%
+  echo.
+
+  echo ## Must-have indicators
+  for %%K in (ba_plus_25plus_share trust_media_pct) do (
+    findstr /i /r /c:"^[ ]*-[ ].*[Nn]ame:[ ].*%%K" "%IND%" >nul || findstr /i "%%K" "%IND%" >nul
+    if errorlevel 1 (echo - MISSING %%K) else (echo - OK %%K)
+  )
+
+  echo.
+  echo ## Required baselines
+  for %%B in (persistence linear_trend random_walk_drift ets_local_level equal_weight_combination) do (
+    findstr /i /r /c:"^[ ]*%%B[ ]*:" "%BAS%" >nul
+    if errorlevel 1 (echo - MISSING %%B) else (echo - OK %%B)
+  )
+)
+echo Wrote "%OUT%"

@@ -1,0 +1,24 @@
+version: 1.0
+standardization: "within-training-window"
+winsorization:
+  method: "robust"
+  lower_pct: 0.5
+  upper_pct: 99.5
+
+transforms:
+  voter_turnout_presidential: { transform: logit_share, scale: zscore }
+  congress_elite_polarization_dw_nominate: { transform: identity, scale: zscore }
+  mass_polarization_anes_7pt_dispersion: { transform: identity, scale: zscore }
+  trust_in_federal_government: { transform: logit_share, scale: zscore }
+  media_fragmentation_hhi: { transform: identity, scale: zscore }
+  social_media_political_sentiment: { transform: identity, scale: zscore }
+  protest_event_rate: { transform: log1p, scale: zscore }
+  violent_crime_rate: { transform: log1p, scale: zscore }
+  homicide_rate: { transform: log1p, scale: zscore }
+  total_fertility_rate: { transform: identity, scale: zscore }
+  immigration_rate: { transform: identity, scale: zscore }
+  unemployment_rate: { transform: identity, scale: zscore }
+  real_gdp_pc_growth: { transform: identity, scale: zscore }
+  prediction_market_pres_party_win: { transform: identity, scale: none }
+  trust_in_media: { transform: logit_share, scale: zscore }
+  marriage_rate: { transform: identity, scale: zscore }

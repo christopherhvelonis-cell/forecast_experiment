@@ -1,0 +1,2 @@
+2025-09-02 | ANES 2024 Time Series CSV | file=anes_timeseries_2024_csv_20250808.csv | source=ANES | url=<ANES 2024 link> | sha256=<SHA256_OF_2024_CSV> | notes=Single-wave 2024; vars used: V241177 (ideology), V241226 (PID7), V241166 (FT Dem), V241167 (FT Rep)
+2025-09-02 | ANES Cumulative Data File (CDF) | file=anes_timeseries_cdf_csv_20220916.csv | source=ANES | url=<ANES CDF link> | sha256=<SHA256_OF_CDF_CSV> | notes=Per-year thermometer pair selection; weights normalized by year; output used for scoring

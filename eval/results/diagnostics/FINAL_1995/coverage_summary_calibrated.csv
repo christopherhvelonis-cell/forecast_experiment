@@ -1,0 +1,5 @@
+indicator,level,covered,total,coverage_rate
+ba_plus_25plus_share,0.5,12,15,0.8
+ba_plus_25plus_share,0.9,14,15,0.9333333333333333
+trust_media_pct,0.5,5,15,0.3333333333333333
+trust_media_pct,0.9,15,15,1.0

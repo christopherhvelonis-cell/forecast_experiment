@@ -1,0 +1,5 @@
+indicator,n,cov50,err50_pp,cov90,err90_pp
+mass_public_polarization,45,0.0,-50.0,0.0,-90.0
+public_trust_government,45,0.0,-50.0,0.0,-90.0
+vep_turnout_pct,51,0.0,-50.0,0.0,-90.0
+ALL,141,0.0,-50.0,0.0,-90.0

@@ -1,0 +1,28 @@
+# baselines.yml — minimal required baselines for Step 2
+persistence:
+  type: naive_last
+  description: "y_{t+h} = y_t for all h"
+
+linear_trend:
+  type: ols_trend
+  description: "OLS on intercept + time; forecast by extrapolation"
+
+random_walk_drift:
+  type: rw_drift
+  description: "Random walk with drift estimated from training window"
+
+ets_local_level:
+  type: ets_AAN_local_level
+  description: "Exponential smoothing local-level; Gaussian errors"
+  params:
+    seasonal: none
+    damped: false
+
+equal_weight_combination:
+  type: simple_average
+  description: "Equal-weight average of individual model predictive means or quantiles"
+  inputs:
+    - persistence
+    - linear_trend
+    - random_walk_drift
+    - ets_local_level

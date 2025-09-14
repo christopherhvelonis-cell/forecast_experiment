@@ -1,0 +1,19 @@
+{
+  "git_tag": "<fill-me>",
+  "created_utc": "2025-09-11T00:50:29Z",
+  "seeds": {
+    "global": null
+  },
+  "environment": {
+    "python": ">=3.13",
+    "os": "Windows"
+  },
+  "inputs": {
+    "calibrated_csvs": []
+  },
+  "outputs": {
+    "final_csv": "",
+    "diagnostics_dir": ""
+  },
+  "commands": []
+}

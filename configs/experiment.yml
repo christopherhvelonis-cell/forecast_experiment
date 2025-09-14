@@ -1,0 +1,15 @@
+project_name: "US_Politics_Culture_Forecast"
+cutoffs: [1945, 1985]
+scored_horizon: 15
+scenario_horizon: 40
+rolling_origin: true
+vintage_required: true
+lambda_penalty_grid: [0.05, 0.1, 0.2]
+random_seed: 123
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+  results: "eval/results"
+ecc_enabled: true
+conformal_enabled: true
+calibration_targets: {} # To be filled with PIT, coverage, reliability settings later

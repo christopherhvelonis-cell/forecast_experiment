@@ -1,0 +1,43 @@
+# indicators.yml — minimal working set for Step 2
+indicators:
+  - name: ba_plus_25plus_share
+    source: US Census CPS/Table A-2 (or historical series you use)
+    unit: percent
+    transform: z
+    data_vintage_available: true
+    revision_policy: none
+    mode_changes: []
+    break_flags: []
+    snapshot_frequency: annual
+    archival_format: csv
+    hash_method: sha256
+    fixed_preprocessing_version: v1
+    diversity_category: demographics
+
+  - name: trust_media_pct
+    source: Gallup (Trust in Mass Media)
+    unit: percent
+    transform: z
+    data_vintage_available: true
+    revision_policy: annual_revisions_possible
+    mode_changes: []
+    break_flags: []
+    snapshot_frequency: annual
+    archival_format: csv
+    hash_method: sha256
+    fixed_preprocessing_version: v1
+    diversity_category: surveys
+
+  - name: mass_public_polarization
+    source: ANES timeseries (weighted)
+    unit: index
+    transform: z
+    data_vintage_available: true
+    revision_policy: irregular
+    mode_changes: ["questionnaire updates across waves"]
+    break_flags: []
+    snapshot_frequency: annualized_from_wave
+    archival_format: csv
+    hash_method: sha256
+    fixed_preprocessing_version: v1
+    diversity_category: social_attitudes

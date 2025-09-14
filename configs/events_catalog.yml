@@ -1,0 +1,10 @@
+version: 0.1
+events:
+  - id: trust_below_20
+    indicator: trust_in_federal_government
+    definition: "Share saying 'most of the time/always' < 20%"
+    horizons: [1, 3, 5, 10, 15]
+  - id: turnout_above_65
+    indicator: voter_turnout_presidential
+    definition: "Voting-eligible population turnout ≥ 65%"
+    horizons: [1, 3, 5, 10, 15]

@@ -1,0 +1,1 @@
+ANES_2024_timeseries_csv | Revision policy: fixed after release. Re-releases are rare; treat as new vintages. Mode changes: none for V241166, V241167, V241177, V241226 in 2024 wave. Data_vintage_available: yes.

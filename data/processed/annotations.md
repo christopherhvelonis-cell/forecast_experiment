@@ -1,0 +1,18 @@
+# Data Annotations
+
+- [OK] Processed anes_ideology_conservative_share.csv -> anes_ideology_conservative_share.csv | breaks: [1959, 1960, 1968, 1970, 1973, 1974, 1975, 1976, 1977, 1978, 1979]
+- [OK] Processed anes_party_dem_share.csv -> anes_party_dem_share.csv | breaks: [1949, 1976]
+- [OK] Processed anes_turnout_share.csv -> anes_turnout_share.csv | breaks: []
+- [OK] Processed anes_V242270.csv -> anes_V242270.csv | breaks: []
+- [OK] Processed anes_V242271.csv -> anes_V242271.csv | breaks: []
+- [OK] Processed ba_plus_25plus_share.csv -> ba_plus_25plus_share.csv | breaks: []
+- [OK] Processed house_polarization_dw.csv -> house_polarization_dw.csv | breaks: [1790, 1802, 1803, 1805, 1806, 1811, 1812, 1813, 1815, 1817, 1818, 1819, 1820, 1821, 1822, 1829, 1831, 1845, 1846, 1848, 1863, 1867, 1868, 1869, 1884, 1885, 1889, 1893, 1895, 1897]
+- [OK] Processed mass_public_polarization.csv -> mass_public_polarization.csv | breaks: [1976, 1977]
+- [OK] Processed mil_spend_gdp_share_pct.csv -> mil_spend_gdp_share_pct.csv | breaks: [1951, 1952, 1954, 1955, 1964, 1966, 1967, 1971, 1982]
+- [OK] Processed public_trust_gov.csv -> public_trust_gov.csv | breaks: []
+- [OK] Processed public_trust_government.csv -> public_trust_government.csv | breaks: []
+- [OK] Processed real_gdp_growth.csv -> real_gdp_growth.csv | breaks: [1981, 1982, 1983, 1985, 1992, 2001, 2010]
+- [OK] Processed trust_media_pct.csv -> trust_media_pct.csv | breaks: [1985, 1995, 2004, 2016, 2017]
+- [OK] Processed unemployment_rate.csv -> unemployment_rate.csv | breaks: [1982, 1984, 2009]
+- [OK] Processed union_membership_rate.csv -> union_membership_rate.csv | breaks: [1979, 1980, 1981, 1983]
+- [OK] Processed vep_turnout_pct.csv -> vep_turnout_pct.csv | breaks: []
