@@ -11,3 +11,7 @@
 .venv/
 
 !eval/results/v2/FINAL_1995/significance/*
+
+__pycache__/
+models/**/__pycache__/
+
