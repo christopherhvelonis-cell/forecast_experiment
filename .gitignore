@@ -9,3 +9,5 @@
 /type
 
 .venv/
+
+!eval/results/v2/FINAL_1995/significance/*
