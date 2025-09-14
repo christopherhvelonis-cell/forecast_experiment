@@ -1,0 +1,18 @@
+
+# Ignore accidental CLI captures
+/( 
+/)
+/cd
+/echo
+/pd.DataFrame
+/python
+/type
+
+.venv/
+
+!eval/results/v2/FINAL_1995/significance/*
+
+__pycache__/
+models/**/__pycache__/
+
+eval/results/hsm_struct_*.csv
