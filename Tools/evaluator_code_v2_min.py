@@ -85,88 +85,26 @@ def main():
 
     # Rename columns to canonical names
     # After pivot, columns will be something like {0.5, 0.9}; handle strings too just in case
-    def find_col(df, key):
-        for c in df.columns:
-                if float(c) == key:
-                    return c
-
-        # removed stray pass
-                # removed stray pass
-        # also try string variants
-        s_key = str(key)
-        for c in df.columns:
-            if str(c).strip() == s_key:
+def find_col(df, key):
+    """
+    Return the column in df that best corresponds to the numeric level key
+    (e.g., 0.5 or 0.9). Handles strings like '0.5', '50%', 'p50', 'covered_50_rate', etc.
+    Skips non-numeric columns (like 'indicator').
+    """
+    keyf = float(key)
+    for c in df.columns:
+        cl = str(c).strip().lower()
+        # try numeric match first
+        try:
+            if float(cl) == keyf:
                 return c
-        return None
-
-    c50 = find_col(piv, 0.5)
-    c90 = find_col(piv, 0.9)
-    if c50 is None or c90 is None:
-        raise ValueError(f"Could not find 0.5/0.9 level columns after pivot. Columns are: {piv.columns.tolist()}")
-
-    piv = piv.rename(columns={c50:"covered_50_rate", c90:"covered_90_rate"})
-    metrics = piv.copy()
-
-    # PIT summaries by indicator,horizon if available, else by indicator
-    if "horizon" in pit_vals.columns:
-        pit_grp = pit_vals.groupby(["indicator","horizon"], as_index=False)["pit"].agg(
-            pit_mean="mean",
-            pit_var=lambda s: float(np.var(s, ddof=1)) if len(s)>1 else np.nan,
-            pit_n="count"
-        )
-    else:
-        pit_grp = pit_vals.groupby(["indicator"], as_index=False)["pit"].agg(
-            pit_mean="mean",
-            pit_var=lambda s: float(np.var(s, ddof=1)) if len(s)>1 else np.nan,
-            pit_n="count"
-        )
-        pit_grp["horizon"] = np.nan
-
-    metrics = metrics.merge(pit_grp, on=["indicator","horizon"], how="left")
-    metrics = metrics[["indicator","horizon","covered_50_rate","covered_90_rate","pit_mean","pit_var","pit_n"]]
-    metrics.to_csv(os.path.join(args.out_dir, "metrics_by_horizon.csv"), index=False)
-# Overall coverage from summary (already computed during Step 8 verify) (skipped by purge — metrics already written above)
-# Placeholders for CRPS/Brier (not recomputed here)
-    # (disabled) crps_brier …
-    # (disabled) crps_brier …
-    # (disabled) crps_brier …
-    # (disabled) crps_brier …
-
-    # Simple â€œlossâ€ proxies: absolute deviation from nominal per horizon
-base_dir = args.out_dir if 'args' in locals() else os.getcwd()
-ld_path = os.path.join(base_dir, "metrics_by_horizon.csv")
-if 'metrics' in locals():
-    ld = metrics.copy()
-elif os.path.exists(ld_path):
-    import pandas as pd
-    ld = pd.read_csv(ld_path)
-else:
-    ld = None
-
-if (ld is not None) and set(["covered_50_rate","covered_90_rate"]).issubset(ld.columns):
-    ld["loss50_abs_error"] = (ld["covered_50_rate"] - 0.5).abs()
-    ld["loss90_abs_error"] = (ld["covered_90_rate"] - 0.9).abs()
-    ld.to_csv(os.path.join(args.out_dir, "loss_differences.csv"), index=False)
-
-_out_dir = (args.out_dir if 'args' in locals() else (base_dir if 'base_dir' in locals() else os.getcwd()))
-
-print(f"[Evaluator v2 level-aware] Wrote metrics_by_horizon.csv, coverage_overall.csv, crps_brier_summary.csv, loss_differences.csv to {_out_dir}")
-if __name__ == "__main__":
-    main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        except Exception:
+            pass
+        # alias matches
+        if keyf == 0.5 and cl in {"0.5","50","50%","p50","q50","q_50","covered_50_rate","cov50","cov50_overall"}:
+            return c
+        if keyf == 0.9 and cl in {"0.9","90","90%","p90","q90","q_90","covered_90_rate","cov90","cov90_overall"}:
+            return c
+    return None
 
 
