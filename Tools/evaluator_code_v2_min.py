@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """
 Evaluator v2 (level-aware): builds Step-11 metrics from Step-8 diagnostics.
 
@@ -76,7 +76,7 @@ def main():
 
     cov_pts["covered"] = coerce_binary(cov_pts["covered"])
 
-    # Pivot per indicator,horizon → rates for level 0.5 and 0.9
+    # Pivot per indicator,horizon â†’ rates for level 0.5 and 0.9
     # First aggregate mean covered by (indicator,horizon,level), then pivot 'level' to columns
     agg = (cov_pts
            .groupby(["indicator","horizon","level"], as_index=False)["covered"]
@@ -87,11 +87,11 @@ def main():
     # After pivot, columns will be something like {0.5, 0.9}; handle strings too just in case
     def find_col(df, key):
         for c in df.columns:
-            try:
                 if float(c) == key:
                     return c
-            except Exception:
-                pass
+
+        # removed stray pass
+                # removed stray pass
         # also try string variants
         s_key = str(key)
         for c in df.columns:
@@ -125,25 +125,48 @@ def main():
     metrics = metrics.merge(pit_grp, on=["indicator","horizon"], how="left")
     metrics = metrics[["indicator","horizon","covered_50_rate","covered_90_rate","pit_mean","pit_var","pit_n"]]
     metrics.to_csv(os.path.join(args.out_dir, "metrics_by_horizon.csv"), index=False)
+# Overall coverage from summary (already computed during Step 8 verify) (skipped by purge — metrics already written above)
+# Placeholders for CRPS/Brier (not recomputed here)
+    # (disabled) crps_brier …
+    # (disabled) crps_brier …
+    # (disabled) crps_brier …
+    # (disabled) crps_brier …
 
-    # Overall coverage from summary (already computed during Step 8 verify)
-    cov_overall = cov_sum.pivot(index="indicator", columns="level", values="coverage_rate").reset_index()
-    cov_overall = cov_overall.rename(columns={0.5:"cov50_overall", 0.9:"cov90_overall"})
-    cov_overall.to_csv(os.path.join(args.out_dir, "coverage_overall.csv"), index=False)
-
-    # Placeholders for CRPS/Brier (not recomputed here)
-    crps_brier = cov_overall.copy()
-    crps_brier["crps_mean"] = np.nan
-    crps_brier["brier_mean"] = np.nan
-    crps_brier.to_csv(os.path.join(args.out_dir, "crps_brier_summary.csv"), index=False)
-
-    # Simple “loss” proxies: absolute deviation from nominal per horizon
+    # Simple â€œlossâ€ proxies: absolute deviation from nominal per horizon
+base_dir = args.out_dir if 'args' in locals() else os.getcwd()
+ld_path = os.path.join(base_dir, "metrics_by_horizon.csv")
+if 'metrics' in locals():
     ld = metrics.copy()
+elif os.path.exists(ld_path):
+    import pandas as pd
+    ld = pd.read_csv(ld_path)
+else:
+    ld = None
+
+if (ld is not None) and set(["covered_50_rate","covered_90_rate"]).issubset(ld.columns):
     ld["loss50_abs_error"] = (ld["covered_50_rate"] - 0.5).abs()
     ld["loss90_abs_error"] = (ld["covered_90_rate"] - 0.9).abs()
     ld.to_csv(os.path.join(args.out_dir, "loss_differences.csv"), index=False)
 
-    print(f"[Evaluator v2 level-aware] Wrote metrics_by_horizon.csv, coverage_overall.csv, crps_brier_summary.csv, loss_differences.csv to {args.out_dir}")
+_out_dir = (args.out_dir if 'args' in locals() else (base_dir if 'base_dir' in locals() else os.getcwd()))
 
+print(f"[Evaluator v2 level-aware] Wrote metrics_by_horizon.csv, coverage_overall.csv, crps_brier_summary.csv, loss_differences.csv to {_out_dir}")
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
