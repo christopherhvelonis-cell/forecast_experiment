@@ -1,0 +1,13 @@
+indicator,horizon,covered_50_rate,covered_90_rate,pit_mean,pit_var,pit_n
+ba_plus_25plus_share,5,0.0,0.0,,,
+ba_plus_25plus_share,10,1.0,1.0,,,
+mil_spend_gdp_share_pct,5,1.0,1.0,,,
+mil_spend_gdp_share_pct,10,1.0,1.0,,,
+real_gdp_growth,5,1.0,1.0,,,
+real_gdp_growth,10,1.0,1.0,,,
+trust_media_pct,5,0.0,0.0,,,
+trust_media_pct,10,1.0,1.0,,,
+unemployment_rate,5,1.0,1.0,,,
+unemployment_rate,10,1.0,1.0,,,
+union_membership_rate,5,0.0,0.0,,,
+union_membership_rate,10,0.0,1.0,,,

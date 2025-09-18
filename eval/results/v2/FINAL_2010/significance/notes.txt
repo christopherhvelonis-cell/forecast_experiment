@@ -1,0 +1,6 @@
+Significance v2 (minimal)
+- Tests whether empirical coverage differs from nominal (0.5, 0.9) using a normal-approx binomial test per indicator,
+  plus 95% Clopper–Pearson CI for reference.
+- BH-FDR (alpha=0.05) applied across all (indicator, level) tests.
+- This does NOT include DM / Clark–McCracken / Giacomini–White because we lack comparable loss sequences vs baselines here.
+  If you later export per-horizon CRPS/Brier sequences for model vs baseline, those tests can be added.
