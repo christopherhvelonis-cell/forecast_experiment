@@ -7,11 +7,12 @@ from conformal_calibration import split_conformal_intervals
 from ebma_psisloo import psis_loo_weights
 
 def murphy_decomposition(df_probs: pd.DataFrame, y: pd.Series, prob_col: str = "p_event"):
-    """Return reliability, resolution, uncertainty (Murphy 1973) - placeholder with zeros."""
+    # Placeholder Murphy (reliability/resolution/uncertainty)
     return {"reliability": 0.0, "resolution": 0.0, "uncertainty": float(y.mean()*(1-y.mean()))}
 
 def main(diagnostics_dir: str, out_dir: str):
-    # Hook placeholder to keep current v2 flow stable
+    # Hook to v2 evaluator if/when you want:
+    # os.system(f"python Tools/evaluator_code_v2_min.py --diagnostics_dir {diagnostics_dir} --out_dir {out_dir}")
     mpath = os.path.join(out_dir, "metrics_by_horizon.csv")
     if os.path.exists(mpath):
         met = pd.read_csv(mpath)
