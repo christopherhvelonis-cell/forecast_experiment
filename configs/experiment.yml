@@ -1,15 +1,30 @@
-project_name: "US_Politics_Culture_Forecast"
-cutoffs: [1945, 1985]
-scored_horizon: 15
-scenario_horizon: 40
+﻿seed: 20250918
+scored_horizon_years: 15
+scenario_horizon_years: 40
 rolling_origin: true
-vintage_required: true
-lambda_penalty_grid: [0.05, 0.1, 0.2]
-random_seed: 123
-paths:
-  raw: "data/raw"
-  processed: "data/processed"
-  results: "eval/results"
+origins: [1985,1990,1995,2000,2005,2010,2015,2020]
+cutoffs: [1945,1985]
+lambda_penalty_grid: [0.05, 0.10, 0.20]
 ecc_enabled: true
-conformal_enabled: true
-calibration_targets: {} # To be filled with PIT, coverage, reliability settings later
+schaake_enabled: true
+stacking:
+  method: fforma
+  features: [trend_strength, seasonality_strength, volatility, break_flags, horizon, indicator_class]
+  inner_folds: 5
+  outer_folds: 5
+governance:
+  acceptance_gate:
+    require_any_two_of_three_improve: [composite, holdout_blocks, non_us_median]
+    equal_weight_skill_floor: "median_skill_vs_equal_weight >= 0"
+    coverage_abs_error_pp_max: 5
+  significance:
+    tests: [DM, ClarkMcCracken, GiacominiWhite]
+    fdr: BH
+    hac_bandwidth: "h-1"
+vintages:
+  required: true
+  docs: data/vintages.md
+  revisions: data/revisions.md
+outputs:
+  save_paths: true
+  save_quantiles: [0.05, 0.50, 0.95]

@@ -1,9 +1,14 @@
-version: "0.1"
-composite: { crps: 0.5, brier: 0.5 }
+﻿composite:
+  crps: 0.5
+  brier: 0.5
 diagnostics_only: [directional, temporal, magnitude]
 calibration_targets:
-  interval_coverages: [0.5, 0.9]
-  reliability_diagrams: true
-  pit_histograms: true
+  coverages: [0.5, 0.9]
+  pit: true
+  reliability: true
   tail_calibration: true
-multivariate_postproc: { method: "ECC" }  # or "Schaake"
+multivariate_postproc:
+  method: ECC  # ECC or Schaake
+  schaake_source: "data/processed/*.csv"
+events:
+  murphy_decomposition: true

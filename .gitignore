@@ -1,18 +1,7 @@
-
-# Ignore accidental CLI captures
-/( 
-/)
-/cd
-/echo
-/pd.DataFrame
-/python
-/type
-
-.venv/
-
-!eval/results/v2/FINAL_1995/significance/*
-
+﻿# diagnostics and large re-gen artifacts (keep your tracked FINAL_*)
+eval/results/diagnostics/**/
+eval/results/**/pit_values*.csv
+eval/results/**/coverage_points_calibrated_long.csv
+# Python junk
 __pycache__/
-models/**/__pycache__/
-
-eval/results/hsm_struct_*.csv
+*.pyc

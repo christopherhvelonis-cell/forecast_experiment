@@ -1,0 +1,7 @@
+﻿{
+  "git_commit": "",
+  "seeds": {"global": 20250918},
+  "origins": [1985,1990,1995,2000,2005,2010,2015,2020],
+  "vintages_doc": "data/vintages.md",
+  "artifacts": []
+}

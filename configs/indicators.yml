@@ -1,43 +1,47 @@
-# indicators.yml — minimal working set for Step 2
-indicators:
-  - name: ba_plus_25plus_share
-    source: US Census CPS/Table A-2 (or historical series you use)
-    unit: percent
-    transform: z
+﻿indicators:
+  - id: real_gdp_growth
+    source: BEA
+    unit: pct_yoy
+    transform: zscore
     data_vintage_available: true
-    revision_policy: none
+    revision_policy: 'standard'
     mode_changes: []
     break_flags: []
-    snapshot_frequency: annual
-    archival_format: csv
-    hash_method: sha256
-    fixed_preprocessing_version: v1
-    diversity_category: demographics
-
-  - name: trust_media_pct
-    source: Gallup (Trust in Mass Media)
-    unit: percent
-    transform: z
+    diversity_category: 'macro'
+    snapshot_frequency: 'annual'
+    archival_format: 'csv'
+    hash_method: 'sha256'
+    fixed_preprocessing_version: 'v1'
+    pre1945_ok: false
+    pre1985_ok: true
+  - id: unemployment_rate
+    source: BLS
+    unit: pct
+    transform: zscore
     data_vintage_available: true
-    revision_policy: annual_revisions_possible
-    mode_changes: []
+    revision_policy: 'revisions_expected'
     break_flags: []
-    snapshot_frequency: annual
-    archival_format: csv
-    hash_method: sha256
-    fixed_preprocessing_version: v1
-    diversity_category: surveys
-
-  - name: mass_public_polarization
-    source: ANES timeseries (weighted)
+    diversity_category: 'labor'
+    snapshot_frequency: 'monthly_to_annual'
+    archival_format: 'csv'
+    hash_method: 'sha256'
+    fixed_preprocessing_version: 'v1'
+    pre1945_ok: false
+    pre1985_ok: true
+  - id: public_trust_government
+    source: Gallup
+    unit: pct
+    transform: logit_clip
+    data_vintage_available: true
+    diversity_category: 'survey'
+    fixed_preprocessing_version: 'v1'
+    pre1945_ok: false
+    pre1985_ok: false
+  - id: house_polarization_dw
+    source: VoteView
     unit: index
-    transform: z
+    transform: zscore
     data_vintage_available: true
-    revision_policy: irregular
-    mode_changes: ["questionnaire updates across waves"]
-    break_flags: []
-    snapshot_frequency: annualized_from_wave
-    archival_format: csv
-    hash_method: sha256
-    fixed_preprocessing_version: v1
-    diversity_category: social_attitudes
+    diversity_category: 'political'
+    fixed_preprocessing_version: 'v1'
+# (Add up to 15; keep diversity across macro/social/media/markets/surveys)

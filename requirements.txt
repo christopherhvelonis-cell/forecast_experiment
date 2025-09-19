@@ -1,0 +1,6 @@
+﻿numpy
+pandas
+scipy
+scikit-learn
+statsmodels
+ruptures

@@ -1,0 +1,157 @@
+﻿#!/usr/bin/env python
+"""
+Evaluator v2 (level-aware): builds Step-11 metrics from Step-8 diagnostics.
+
+Works with coverage_points_calibrated.csv shaped like:
+  ['indicator','year','horizon','level','covered']
+where 'level' is 0.5 or 0.9 and 'covered' is 0/1 (or True/False).
+
+Inputs:
+  --diagnostics_dir : folder containing
+      - coverage_points_calibrated.csv
+      - coverage_summary_calibrated.csv
+      - pit_values_calibrated.csv
+  --out_dir         : output folder (created if missing)
+  --indicators      : optional space-separated list to keep
+
+Outputs:
+  - metrics_by_horizon.csv     : per indicator & horizon, covered_50_rate and covered_90_rate + PIT summaries
+  - coverage_overall.csv       : overall 50/90 coverage per indicator (from summary)
+  - crps_brier_summary.csv     : placeholders (NaN) + overall coverage (compatibility)
+  - loss_differences.csv       : |coverage - nominal| by horizon for 0.5 and 0.9
+"""
+
+import argparse, os
+import pandas as pd
+import numpy as np
+
+REQ_FILES = [
+    "coverage_points_calibrated.csv",
+    "coverage_summary_calibrated.csv",
+    "pit_values_calibrated.csv",
+]
+
+def read_required(d):
+    paths = {name: os.path.join(d, name) for name in REQ_FILES}
+    for name, p in paths.items():
+        if not os.path.exists(p):
+            raise FileNotFoundError(f"Missing required file: {p}")
+    return (
+        pd.read_csv(paths["coverage_points_calibrated.csv"]),
+        pd.read_csv(paths["coverage_summary_calibrated.csv"]),
+        pd.read_csv(paths["pit_values_calibrated.csv"]),
+    )
+
+def coerce_binary(s):
+    if s.dtype == bool:
+        return s.astype(int)
+    if s.dtype == object:
+        t = s.astype(str).str.strip().str.lower()
+        m = {"true":1,"false":0,"t":1,"f":0,"y":1,"n":0,"yes":1,"no":0,"1":1,"0":0}
+        return t.map(m).fillna(pd.to_numeric(t, errors="coerce")).fillna(0).astype(int)
+    return (pd.to_numeric(s, errors="coerce").fillna(0) > 0).astype(int)
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--diagnostics_dir", required=True)
+    ap.add_argument("--out_dir", required=True)
+    ap.add_argument("--indicators", nargs="*", default=None)
+    args = ap.parse_args()
+
+    os.makedirs(args.out_dir, exist_ok=True)
+    cov_pts, cov_sum, pit_vals = read_required(args.diagnostics_dir)
+
+    # Optional filter
+    if args.indicators:
+        keep = set(args.indicators)
+        cov_pts = cov_pts[cov_pts["indicator"].isin(keep)]
+        cov_sum = cov_sum[cov_sum["indicator"].isin(keep)]
+        pit_vals = pit_vals[pit_vals["indicator"].isin(keep)]
+
+    # Expect columns exactly as your file:
+    # ['indicator','year','horizon','level','covered']
+    need = {"indicator","horizon","level","covered"}
+    if not need.issubset(set(cov_pts.columns)):
+        raise ValueError(f"coverage_points_calibrated.csv must include columns {need}, found {cov_pts.columns.tolist()}")
+
+    cov_pts["covered"] = coerce_binary(cov_pts["covered"])
+
+    # Pivot per indicator,horizon â†’ rates for level 0.5 and 0.9
+    # First aggregate mean covered by (indicator,horizon,level), then pivot 'level' to columns
+    agg = (cov_pts
+           .groupby(["indicator","horizon","level"], as_index=False)["covered"]
+           .mean())
+    piv = agg.pivot(index=["indicator","horizon"], columns="level", values="covered").reset_index()
+
+    # Rename columns to canonical names
+    # After pivot, columns will be something like {0.5, 0.9}; handle strings too just in case
+    def find_col(df, key):
+        for c in df.columns:
+                if float(c) == key:
+                    return c
+
+        # removed stray pass
+                # removed stray pass
+        # also try string variants
+        s_key = str(key)
+        for c in df.columns:
+            if str(c).strip() == s_key:
+                return c
+        return None
+
+    c50 = find_col(piv, 0.5)
+    c90 = find_col(piv, 0.9)
+    if c50 is None or c90 is None:
+        raise ValueError(f"Could not find 0.5/0.9 level columns after pivot. Columns are: {piv.columns.tolist()}")
+
+    piv = piv.rename(columns={c50:"covered_50_rate", c90:"covered_90_rate"})
+    metrics = piv.copy()
+
+    # PIT summaries by indicator,horizon if available, else by indicator
+    if "horizon" in pit_vals.columns:
+        pit_grp = pit_vals.groupby(["indicator","horizon"], as_index=False)["pit"].agg(
+            pit_mean="mean",
+            pit_var=lambda s: float(np.var(s, ddof=1)) if len(s)>1 else np.nan,
+            pit_n="count"
+        )
+    else:
+        pit_grp = pit_vals.groupby(["indicator"], as_index=False)["pit"].agg(
+            pit_mean="mean",
+            pit_var=lambda s: float(np.var(s, ddof=1)) if len(s)>1 else np.nan,
+            pit_n="count"
+        )
+        pit_grp["horizon"] = np.nan
+
+    metrics = metrics.merge(pit_grp, on=["indicator","horizon"], how="left")
+    metrics = metrics[["indicator","horizon","covered_50_rate","covered_90_rate","pit_mean","pit_var","pit_n"]]
+    metrics.to_csv(os.path.join(args.out_dir, "metrics_by_horizon.csv"), index=False)
+
+True# Overall coverage from summary (already computed during Step 8 verify) (skipped by purge — metrics already written above)
+
+True# Placeholders for CRPS/Brier (not recomputed here)
+    # (disabled) crps_brier …
+    # (disabled) crps_brier …
+    # (disabled) crps_brier …
+    # (disabled) crps_brier …
+
+    # Simple â€œlossâ€ proxies: absolute deviation from nominal per horizon
+    ld = metrics.copy()
+    ld["loss50_abs_error"] = (ld["covered_50_rate"] - 0.5).abs()
+    ld["loss90_abs_error"] = (ld["covered_90_rate"] - 0.9).abs()
+    ld.to_csv(os.path.join(args.out_dir, "loss_differences.csv"), index=False)
+
+    print(f"[Evaluator v2 level-aware] Wrote metrics_by_horizon.csv, coverage_overall.csv, crps_brier_summary.csv, loss_differences.csv to {args.out_dir}")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
+
