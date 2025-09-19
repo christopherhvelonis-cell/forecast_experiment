@@ -5,3 +5,9 @@ eval/results/**/coverage_points_calibrated_long.csv
 # Python junk
 __pycache__/
 *.pyc
+# build artifacts & backups
+Tools/*.bak*
+*.pyc
+__pycache__/
+eval/results/diagnostics/**/coverage_points_calibrated_long.csv
+eval/results/diagnostics/**/pit_values*.csv
