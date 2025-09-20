@@ -1,49 +1,7 @@
-{
-  "origin": 1995,
-  "scored_horizons": 15,
-  "indicators": [
-    "ba_plus_25plus_share",
-    "trust_media_pct"
-  ],
+﻿{
   "regions": [
-    {
-      "region": "WEur",
-      "period": [1945, 1965],
-      "ba_source_hint": "OECD/UNESCO tertiary attainment (25+)",
-      "tm_source_hint": "Eurobarometer/ESS trust in media (earliest available)",
-      "confidence": {"ba": "M", "tm": "L"}
-    },
-    {
-      "region": "India",
-      "period": [1947, 1967],
-      "ba_source_hint": "Census/UNESCO tertiary attainment (25+)",
-      "tm_source_hint": "National surveys (if available)",
-      "confidence": {"ba": "M", "tm": "L"}
-    },
-    {
-      "region": "Japan",
-      "period": [1950, 1970],
-      "ba_source_hint": "MEXT/UNESCO tertiary attainment (25+)",
-      "tm_source_hint": "NHK/ISSP trust media items",
-      "confidence": {"ba": "H", "tm": "M"}
-    },
-    {
-      "region": "Brazil",
-      "period": [1985, 2005],
-      "ba_source_hint": "PNAD/UNESCO tertiary attainment (25+)",
-      "tm_source_hint": "Latinobarometro media trust (post-1995)",
-      "confidence": {"ba": "M", "tm": "M"}
-    },
-    {
-      "region": "SouthAfrica",
-      "period": [1994, 2014],
-      "ba_source_hint": "Stats SA/UNESCO tertiary attainment (25+)",
-      "tm_source_hint": "Afrobarometer media trust",
-      "confidence": {"ba": "M", "tm": "M"}
-    }
+    {"name": "WEurope_1945_1965", "mapping": "US_indicator_X -> Proxy_A", "confidence": "H"},
+    {"name": "India_1947_1967",   "mapping": "US_indicator_Y -> Proxy_B", "confidence": "M"}
   ],
-  "acceptance": {
-    "coverage_tolerance_pp": 10,
-    "pit_tail_multiplier": 2.0
-  }
+  "checks": ["coverage_50", "coverage_90", "PIT_uniform", "Brier_reliability"]
 }
