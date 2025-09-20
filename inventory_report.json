@@ -1,0 +1,590 @@
+﻿[
+    {
+        "id":  "dir.configs",
+        "group":  "structure",
+        "description":  "configs/ exists",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.data",
+        "group":  "structure",
+        "description":  "data/{raw,processed,docsheets} exist",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.eval",
+        "group":  "structure",
+        "description":  "eval/results/{diagnostics,v2} exist",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.models",
+        "group":  "structure",
+        "description":  "models/HSM_*/, FSM_*/ exist",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.misc",
+        "group":  "structure",
+        "description":  "bias_logs/, ensemble/, validation_nonUS/, reports/ exist",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_experiment.yml",
+        "group":  "configs",
+        "description":  "configs\\experiment.yml present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_scoring.yml",
+        "group":  "configs",
+        "description":  "configs\\scoring.yml present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_indicators.yml",
+        "group":  "configs",
+        "description":  "configs\\indicators.yml present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_baselines.yml",
+        "group":  "configs",
+        "description":  "configs\\baselines.yml present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_indicator_transform_spec.yml",
+        "group":  "configs",
+        "description":  "configs\\indicator_transform_spec.yml present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_TEMPLATE_data_sheet.md",
+        "group":  "configs",
+        "description":  "configs\\TEMPLATE_data_sheet.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_TEMPLATE_model_card.md",
+        "group":  "configs",
+        "description":  "configs\\TEMPLATE_model_card.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_TEMPLATE_bias_log.md",
+        "group":  "configs",
+        "description":  "configs\\TEMPLATE_bias_log.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_TEMPLATE_scorecard.csv",
+        "group":  "configs",
+        "description":  "configs\\TEMPLATE_scorecard.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_TEMPLATE_run_manifest.json",
+        "group":  "configs",
+        "description":  "configs\\TEMPLATE_run_manifest.json present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "doc.vintages",
+        "group":  "data",
+        "description":  "data/vintages.md exists",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "doc.revisions",
+        "group":  "data",
+        "description":  "data/revisions.md exists",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.indicators.count",
+        "group":  "configs",
+        "description":  "â‰¥10 indicators defined",
+        "pass":  true,
+        "detail":  "count=15"
+    },
+    {
+        "id":  "tool.Tools_sweep_and_route_coverage_by_year.py",
+        "group":  "tools",
+        "description":  "Tools\\sweep_and_route_coverage_by_year.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tool.Tools_evaluator_code_v2_min.py",
+        "group":  "tools",
+        "description":  "Tools\\evaluator_code_v2_min.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tool.Tools_backfill_evaluator_artifacts.py",
+        "group":  "tools",
+        "description":  "Tools\\backfill_evaluator_artifacts.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tool.Tools_evaluator_significance_min.py",
+        "group":  "tools",
+        "description":  "Tools\\evaluator_significance_min.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tool.Tools_check_outputs.ps1",
+        "group":  "tools",
+        "description":  "Tools\\check_outputs.ps1 present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "toolopt.Tools_ecc_schaake.py",
+        "group":  "tools+upgrades",
+        "description":  "Tools\\ecc_schaake.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "toolopt.Tools_meta_stacking_fforma.py",
+        "group":  "tools+upgrades",
+        "description":  "Tools\\meta_stacking_fforma.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "toolopt.Tools_ebma_psisloo.py",
+        "group":  "tools+upgrades",
+        "description":  "Tools\\ebma_psisloo.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "toolopt.Tools_conformal_calibration.py",
+        "group":  "tools+upgrades",
+        "description":  "Tools\\conformal_calibration.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "toolopt.Tools_murphy_append.py",
+        "group":  "tools+upgrades",
+        "description":  "Tools\\murphy_append.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "toolopt.Tools_evaluator_code_v3.py",
+        "group":  "tools+upgrades",
+        "description":  "Tools\\evaluator_code_v3.py present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "data.processed.any",
+        "group":  "data",
+        "description":  "Any data/processed/*.csv exist",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.1985",
+        "group":  "diagnostics",
+        "description":  "FINAL_1985: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.1990",
+        "group":  "diagnostics",
+        "description":  "FINAL_1990: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.1995",
+        "group":  "diagnostics",
+        "description":  "FINAL_1995: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2000",
+        "group":  "diagnostics",
+        "description":  "FINAL_2000: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2005",
+        "group":  "diagnostics",
+        "description":  "FINAL_2005: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2010",
+        "group":  "diagnostics",
+        "description":  "FINAL_2010: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2015",
+        "group":  "diagnostics",
+        "description":  "FINAL_2015: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2020",
+        "group":  "diagnostics",
+        "description":  "FINAL_2020: coverage_points_calibrated.csv non-empty",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.metrics",
+        "group":  "scored",
+        "description":  "FINAL_1985: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_1985: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.1985.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_1985: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_1985: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.significance",
+        "group":  "scored",
+        "description":  "FINAL_1985: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.metrics",
+        "group":  "scored",
+        "description":  "FINAL_1990: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_1990: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.1990.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_1990: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_1990: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.significance",
+        "group":  "scored",
+        "description":  "FINAL_1990: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.metrics",
+        "group":  "scored",
+        "description":  "FINAL_1995: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_1995: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.1995.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_1995: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_1995: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.significance",
+        "group":  "scored",
+        "description":  "FINAL_1995: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2000: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_2000: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.2000.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2000: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2000: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.significance",
+        "group":  "scored",
+        "description":  "FINAL_2000: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2005: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_2005: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.2005.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2005: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2005: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.significance",
+        "group":  "scored",
+        "description":  "FINAL_2005: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2010: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_2010: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.2010.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2010: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2010: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.significance",
+        "group":  "scored",
+        "description":  "FINAL_2010: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2015: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_2015: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.2015.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2015: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2015: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.significance",
+        "group":  "scored",
+        "description":  "FINAL_2015: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2020: metrics_by_horizon.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.lossdiff",
+        "group":  "scored",
+        "description":  "FINAL_2020: loss_differences.csv header OK",
+        "pass":  true,
+        "detail":  "indicator,horizon,covered_50_rate,covered_90_rate,loss50_abs_error,loss90_abs_error"
+    },
+    {
+        "id":  "score.2020.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2020: coverage_overall.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2020: crps_brier_summary.csv present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.significance",
+        "group":  "scored",
+        "description":  "FINAL_2020: significance/FDR results present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "ensemble.readme",
+        "group":  "ensemble",
+        "description":  "ensemble/README.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "validation.specs",
+        "group":  "validation",
+        "description":  "validation_nonUS/plan.md \u0026 specs.json present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "bias.any",
+        "group":  "bias",
+        "description":  "At least one bias_logs/*.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "reports.final",
+        "group":  "reports",
+        "description":  "reports/final_report.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "reports.release",
+        "group":  "reports",
+        "description":  "reports/release_manifest.md present",
+        "pass":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "gate.artifacts",
+        "group":  "governance",
+        "description":  "Scored metrics exist for at least one origin",
+        "pass":  true,
+        "detail":  ""
+    }
+]

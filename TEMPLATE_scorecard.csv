@@ -1,0 +1,5 @@
+﻿metric,description
+composite,"0.5*CRPS + 0.5*Brier"
+coverage50_abs_error,Abs error vs nominal 50%
+coverage90_abs_error,Abs error vs nominal 90%
+pit_uniformity,KS p-value for PIT ~ U(0,1)

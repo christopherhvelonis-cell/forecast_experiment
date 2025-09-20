@@ -1,0 +1,122 @@
+[
+  {
+    "name": "real_gdp_growth",
+    "source": "BEA NIPA; ALFRED",
+    "unit": "percent_yoy",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "cpi_inflation",
+    "source": "BLS CPI-U; ALFRED",
+    "unit": "percent_yoy",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "unemployment_rate",
+    "source": "BLS; ALFRED",
+    "unit": "percent",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "labor_force_participation",
+    "source": "BLS; ALFRED",
+    "unit": "percent",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "treasury_10y_yield",
+    "source": "FRED DGS10; ALFRED",
+    "unit": "percent",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "term_spread_10y_3m",
+    "source": "FRED DGS10 minus TB3MS; ALFRED",
+    "unit": "percentage_points",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "housing_starts_total",
+    "source": "Census; ALFRED",
+    "unit": "thousands_sa",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "industrial_production",
+    "source": "Fed G.17; ALFRED",
+    "unit": "index",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "federal_spending_gdp_share",
+    "source": "OMB Historical Tables; ALFRED where possible",
+    "unit": "percent_gdp",
+    "transform": "z",
+    "data_vintage_available": true,
+    "scenario_only": false
+  },
+  {
+    "name": "consumer_sentiment",
+    "source": "Univ. Michigan ICS",
+    "unit": "index",
+    "transform": "z",
+    "data_vintage_available": false,
+    "scenario_only": true
+  },
+  {
+    "name": "sp500_real_total_return",
+    "source": "S&P; Shiller",
+    "unit": "percent_yoy",
+    "transform": "z",
+    "data_vintage_available": false,
+    "scenario_only": true
+  },
+  {
+    "name": "baa_aaa_spread",
+    "source": "FRED/ICE",
+    "unit": "percentage_points",
+    "transform": "z",
+    "data_vintage_available": false,
+    "scenario_only": true
+  },
+  {
+    "name": "immigration_rate",
+    "source": "DHS Yearbook",
+    "unit": "per_thousand_pop",
+    "transform": "z",
+    "data_vintage_available": false,
+    "scenario_only": true
+  },
+  {
+    "name": "union_membership_rate",
+    "source": "BLS CPS",
+    "unit": "percent",
+    "transform": "z",
+    "data_vintage_available": false,
+    "scenario_only": true
+  },
+  {
+    "name": "gini_income_inequality",
+    "source": "Census CPS ASEC",
+    "unit": "index",
+    "transform": "z",
+    "data_vintage_available": false,
+    "scenario_only": true
+  }
+]

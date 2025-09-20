@@ -1,0 +1,15 @@
+﻿- name: real_gdp_growth
+- name: cpi_inflation
+- name: unemployment_rate
+- name: labor_force_participation
+- name: treasury_10y_yield
+- name: term_spread_10y_3m
+- name: housing_starts_total
+- name: industrial_production
+- name: federal_spending_gdp_share
+- name: consumer_sentiment
+- name: sp500_real_total_return
+- name: baa_aaa_spread
+- name: immigration_rate
+- name: union_membership_rate
+- name: gini_income_inequality

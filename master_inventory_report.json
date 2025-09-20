@@ -1,0 +1,513 @@
+﻿[
+    {
+        "id":  "dir.configs",
+        "group":  "structure",
+        "description":  "configs/ exists",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.data",
+        "group":  "structure",
+        "description":  "data/{raw,processed,docsheets} exist",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.eval",
+        "group":  "structure",
+        "description":  "eval/results/{diagnostics,v2} exist",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.models",
+        "group":  "structure",
+        "description":  "models/HSM_*/, FSM_*/ exist",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "dir.misc",
+        "group":  "structure",
+        "description":  "bias_logs/, ensemble/, validation_nonUS/, reports/ exist",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_experiment.yml",
+        "group":  "configs",
+        "description":  "configs\\experiment.yml present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_scoring.yml",
+        "group":  "configs",
+        "description":  "configs\\scoring.yml present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_indicators.yml",
+        "group":  "configs",
+        "description":  "configs\\indicators.yml present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_baselines.yml",
+        "group":  "configs",
+        "description":  "configs\\baselines.yml present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "cfg.configs_indicator_transform_spec.yml",
+        "group":  "configs",
+        "description":  "configs\\indicator_transform_spec.yml present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tpl.TEMPLATE_data_sheet.md",
+        "group":  "templates",
+        "description":  "TEMPLATE_data_sheet.md present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tpl.TEMPLATE_model_card.md",
+        "group":  "templates",
+        "description":  "TEMPLATE_model_card.md present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tpl.TEMPLATE_bias_log.md",
+        "group":  "templates",
+        "description":  "TEMPLATE_bias_log.md present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tpl.TEMPLATE_scorecard.csv",
+        "group":  "templates",
+        "description":  "TEMPLATE_scorecard.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "tpl.TEMPLATE_run_manifest.json",
+        "group":  "templates",
+        "description":  "TEMPLATE_run_manifest.json present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.experiment.ecc",
+        "group":  "configs",
+        "description":  "experiment.yml mentions ecc_enabled",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.experiment.stacking",
+        "group":  "configs",
+        "description":  "experiment.yml mentions stacking/fforma",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.scoring.calib",
+        "group":  "configs",
+        "description":  "scoring.yml has calibration_targets",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.scoring.mv",
+        "group":  "configs",
+        "description":  "scoring.yml has multivariate_postproc (ECC/Schaake)",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.scoring.conformal",
+        "group":  "configs",
+        "description":  "scoring.yml mentions conformal (CQR/EnbPI) or split-conformal",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.acceptance",
+        "group":  "configs",
+        "description":  "experiment.yml has acceptance gate rules",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "content.tests",
+        "group":  "configs",
+        "description":  "experiment.yml lists DM/Clarkâ€",
+        "ok":  "McCracken/Giacominiâ€White",
+        "detail":  true
+    },
+    {
+        "id":  "content.penalty",
+        "group":  "configs",
+        "description":  "experiment.yml has lambda_penalty_grid",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "data.vintages",
+        "group":  "data",
+        "description":  "data/vintages.md exists",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "data.revisions",
+        "group":  "data",
+        "description":  "data/revisions.md exists",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.metrics",
+        "group":  "scored",
+        "description":  "FINAL_1985: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_1985: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_1985: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1985.significance",
+        "group":  "scored",
+        "description":  "FINAL_1985: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.metrics",
+        "group":  "scored",
+        "description":  "FINAL_1990: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_1990: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_1990: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1990.significance",
+        "group":  "scored",
+        "description":  "FINAL_1990: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.metrics",
+        "group":  "scored",
+        "description":  "FINAL_1995: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_1995: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_1995: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.1995.significance",
+        "group":  "scored",
+        "description":  "FINAL_1995: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2000: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2000: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2000: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2000.significance",
+        "group":  "scored",
+        "description":  "FINAL_2000: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2005: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2005: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2005: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2005.significance",
+        "group":  "scored",
+        "description":  "FINAL_2005: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2010: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2010: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2010: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2010.significance",
+        "group":  "scored",
+        "description":  "FINAL_2010: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2015: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2015: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2015: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2015.significance",
+        "group":  "scored",
+        "description":  "FINAL_2015: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.metrics",
+        "group":  "scored",
+        "description":  "FINAL_2020: metrics_by_horizon.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.covoverall",
+        "group":  "scored",
+        "description":  "FINAL_2020: coverage_overall.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.crpsbrier",
+        "group":  "scored",
+        "description":  "FINAL_2020: crps_brier_summary.csv present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "score.2020.significance",
+        "group":  "scored",
+        "description":  "FINAL_2020: significance/ (FDR) present",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.1985",
+        "group":  "diagnostics",
+        "description":  "FINAL_1985: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.1990",
+        "group":  "diagnostics",
+        "description":  "FINAL_1990: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.1995",
+        "group":  "diagnostics",
+        "description":  "FINAL_1995: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2000",
+        "group":  "diagnostics",
+        "description":  "FINAL_2000: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2005",
+        "group":  "diagnostics",
+        "description":  "FINAL_2005: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2010",
+        "group":  "diagnostics",
+        "description":  "FINAL_2010: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2015",
+        "group":  "diagnostics",
+        "description":  "FINAL_2015: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "diag.2020",
+        "group":  "diagnostics",
+        "description":  "FINAL_2020: coverage_points_calibrated.csv non-empty",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.1985",
+        "group":  "scored",
+        "description":  "FINAL_1985: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.1990",
+        "group":  "scored",
+        "description":  "FINAL_1990: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.1995",
+        "group":  "scored",
+        "description":  "FINAL_1995: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.2000",
+        "group":  "scored",
+        "description":  "FINAL_2000: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.2005",
+        "group":  "scored",
+        "description":  "FINAL_2005: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.2010",
+        "group":  "scored",
+        "description":  "FINAL_2010: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.2015",
+        "group":  "scored",
+        "description":  "FINAL_2015: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    },
+    {
+        "id":  "losshdr.2020",
+        "group":  "scored",
+        "description":  "FINAL_2020: loss_differences.csv header OK",
+        "ok":  true,
+        "detail":  ""
+    }
+]
