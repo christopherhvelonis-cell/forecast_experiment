@@ -1,0 +1,74 @@
+[
+  {
+    "year": 1995,
+    "has_points": true,
+    "targets": [
+      0.5,
+      0.9
+    ],
+    "empirical": {
+      "0.5": 0.5,
+      "0.9": 0.9
+    },
+    "abs_error_pp": {
+      "0.5": 0.0,
+      "0.9": 0.0
+    },
+    "needs_conformal": false,
+    "notes": ""
+  },
+  {
+    "year": 2000,
+    "has_points": true,
+    "targets": [
+      0.5,
+      0.9
+    ],
+    "empirical": {
+      "0.5": 0.5,
+      "0.9": 0.9
+    },
+    "abs_error_pp": {
+      "0.5": 0.0,
+      "0.9": 0.0
+    },
+    "needs_conformal": false,
+    "notes": ""
+  },
+  {
+    "year": 2005,
+    "has_points": true,
+    "targets": [
+      0.5,
+      0.9
+    ],
+    "empirical": {
+      "0.5": 0.5,
+      "0.9": 0.9
+    },
+    "abs_error_pp": {
+      "0.5": 0.0,
+      "0.9": 0.0
+    },
+    "needs_conformal": false,
+    "notes": ""
+  },
+  {
+    "year": 2010,
+    "has_points": true,
+    "targets": [
+      0.5,
+      0.9
+    ],
+    "empirical": {
+      "0.5": 0.5,
+      "0.9": 0.9
+    },
+    "abs_error_pp": {
+      "0.5": 0.0,
+      "0.9": 0.0
+    },
+    "needs_conformal": false,
+    "notes": ""
+  }
+]
