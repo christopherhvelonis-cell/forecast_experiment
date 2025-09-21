@@ -1,11 +1,3 @@
-indicator,cov50_overall,cov90_overall,crps_mean,brier_mean
-ba_plus_25plus_share,0.5,0.5,,
-house_polarization_dw,1.0,1.0,,
-mass_public_polarization,1.0,1.0,,
-mil_spend_gdp_share_pct,1.0,1.0,,
-public_trust_government,1.0,1.0,,
-real_gdp_growth,1.0,1.0,,
-trust_media_pct,0.0,1.0,,
-unemployment_rate,0.0,1.0,,
-union_membership_rate,0.0,1.0,,
-vep_turnout_pct,1.0,1.0,,
+stat,value
+crps_mean,0.410000
+brier_mean,

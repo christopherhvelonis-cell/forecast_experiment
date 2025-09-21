@@ -1,5 +1,4 @@
 horizon,metric,value
-1,composite_mean,0.500000
 ,,
 ,,
 ,,
@@ -15,3 +14,4 @@ horizon,metric,value
 ,,
 ,,
 1,composite_proxy,0.000000
+1,composite_mean,0.450000
