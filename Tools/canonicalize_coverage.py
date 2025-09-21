@@ -1,11 +1,6 @@
-# ==== Paths ====
-$proj = "C:\Users\Owner\Downloads\forecast_experiment"
-$py   = Join-Path $proj ".venv\Scripts\python.exe"
+﻿# Tools/canonicalize_coverage.py
+# Purpose: rewrite coverage_overall.csv files into canonical header: level,empirical
 
-# ==== canonicalize_coverage.py (new) ====
-$canon = @'
-# Tools/canonicalize_coverage.py
-# Standardizes coverage_overall.csv headers to "level,empirical".
 import csv, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -16,35 +11,31 @@ YEARS = [1995,2000,2005,2010]
 def normalize(path: pathlib.Path):
     if not path.exists():
         return False
-    with path.open(newline="", encoding="utf-8") as f:
-        rows = list(csv.reader(f))
+    with path.open(encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
     if not rows:
         return False
-    # Try to detect header style
-    hdr = [h.strip().lstrip("\ufeff").lower() for h in rows[0]]
-    outrows = []
-    if hdr == ["level","empirical"] or hdr == ["coverage","value"]:
-        return False  # already canonical/accepted
-    if "indicator" in hdr and "cov50_overall" in hdr and "cov90_overall" in hdr:
-        # Convert to rows of level,empirical
-        for r in rows[1:]:
-            if len(r) >= 3:
-                outrows.append(["0.5", r[1]])
-                outrows.append(["0.9", r[2]])
-    elif "indicator" in hdr and "0.5" in hdr and "0.9" in hdr:
-        for r in rows[1:]:
-            if len(r) >= 3:
-                outrows.append(["0.5", r[1]])
-                outrows.append(["0.9", r[2]])
-    else:
-        print(f"[skip] {path} unrecognized header {hdr}")
+
+    out = []
+    for r in rows:
+        # try several possible keys
+        lvl = r.get("level") or r.get("coverage") or r.get("indicator") or ""
+        emp = r.get("empirical") or r.get("value") or r.get("cov50_overall") or r.get("0.5") or ""
+        lvl = (lvl or "").strip()
+        emp = (emp or "").strip().replace(",", ".")
+        if lvl and emp:
+            try:
+                out.append({"level": lvl, "empirical": float(emp)})
+            except:
+                continue
+
+    if not out:
         return False
-    # Rewrite
-    with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["level","empirical"])
-        w.writerows(outrows)
-    print(f"[canon] rewrote {path}")
+
+    with path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["level","empirical"])
+        w.writeheader()
+        w.writerows(out)
     return True
 
 def main():
@@ -52,10 +43,9 @@ def main():
     for y in YEARS:
         p = V2 / f"FINAL_{y}" / "coverage_overall.csv"
         if normalize(p):
+            print(f"[canon] {p}")
             changed += 1
     print(f"[summary] canonicalized={changed}")
 
 if __name__ == "__main__":
     main()
-'@
-Set-Content -Encoding UTF8 -Path (Join-Path $proj "Tools\canonicalize_coverage.py") -Value $canon

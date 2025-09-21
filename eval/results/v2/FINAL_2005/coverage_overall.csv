@@ -1,7 +1,7 @@
-indicator,0.5,0.9
-ba_plus_25plus_share,0.5,0.5
-mil_spend_gdp_share_pct,1.0,1.0
-real_gdp_growth,1.0,1.0
-trust_media_pct,0.5,0.5
-unemployment_rate,1.0,1.0
-union_membership_rate,0.0,0.5
+level,empirical
+ba_plus_25plus_share,0.5
+mil_spend_gdp_share_pct,1.0
+real_gdp_growth,1.0
+trust_media_pct,0.5
+unemployment_rate,1.0
+union_membership_rate,0.0
