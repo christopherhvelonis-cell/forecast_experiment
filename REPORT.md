@@ -39,6 +39,8 @@
 | 2010 | 0.500 | 0.900 | 0.00 | 0.00 | no | yes |
 
 ## Composite Mean by Year
+![Composite Mean by Year](fig_composite_by_year.png)
+
 
 | year | composite_mean |
 | --- | --- |
