@@ -1,0 +1,5 @@
+﻿"id","group","description","ok","detail"
+"composite.1995","accept","Composite ≤ 0.6 (FINAL_1995)","True","composite_mean=0.5"
+"composite.2000","accept","Composite ≤ 0.6 (FINAL_2000)","True","composite_mean=0.5"
+"composite.2005","accept","Composite ≤ 0.6 (FINAL_2005)","True","composite_mean=0.5"
+"composite.2010","accept","Composite ≤ 0.6 (FINAL_2010)","True","composite_mean=0.5"
