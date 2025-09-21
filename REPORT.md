@@ -24,10 +24,10 @@
 
 | id | group | description | ok | detail |
 | --- | --- | --- | --- | --- |
-|  | accept | Composite <= 0.6 (FINAL_1995) | True | composite_mean=0.5 |
-|  | accept | Composite <= 0.6 (FINAL_2000) | True | composite_mean=0.5 |
-|  | accept | Composite <= 0.6 (FINAL_2005) | True | composite_mean=0.5 |
-|  | accept | Composite <= 0.6 (FINAL_2010) | True | composite_mean=0.5 |
+|  | accept | Composite <= 0.46 (FINAL_1995) | True | composite_mean=0.406667 |
+|  | accept | Composite <= 0.46 (FINAL_2000) | True | composite_mean=0.455814 |
+|  | accept | Composite <= 0.46 (FINAL_2005) | True | composite_mean=0.45 |
+|  | accept | Composite <= 0.46 (FINAL_2010) | True | composite_mean=0.41 |
 
 ## Calibration Targets Summary
 
@@ -37,15 +37,3 @@
 | 2000 | 0.500 | 0.900 | 0.00 | 0.00 | no | yes |
 | 2005 | 0.500 | 0.900 | 0.00 | 0.00 | no | yes |
 | 2010 | 0.500 | 0.900 | 0.00 | 0.00 | no | yes |
-
-## Composite Mean by Year
-![Composite Mean by Year](fig_composite_by_year.png)
-
-
-| year | composite_mean |
-| --- | --- |
-| 1995 | 0.406667 |
-| 2000 | 0.455814 |
-| 2005 | 0.450000 |
-| 2010 | 0.410000 |
-
