@@ -1,0 +1,11 @@
+model,weight
+HSM_chatgpt,0.10
+FSM_chatgpt,0.10
+HSM_grok,0.10
+FSM_grok,0.10
+HSM_equal_weight,0.10
+FSM_equal_weight,0.10
+HSM_baseline,0.10
+FSM_baseline,0.10
+HSM_naive,0.10
+FSM_naive,0.10
