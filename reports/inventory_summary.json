@@ -1,0 +1,106 @@
+{
+  "generated_at_utc": "2025-09-21T07:47:22",
+  "root": "C:\\Users\\Owner\\Downloads\\forecast_experiment",
+  "tree": {
+    "present_dirs": [
+      "data/raw",
+      "data/processed",
+      "data/docsheets",
+      "models/HSM_chatgpt",
+      "models/FSM_chatgpt",
+      "models/HSM_grok",
+      "models/FSM_grok",
+      "eval/results",
+      "validation_nonUS",
+      "bias_logs",
+      "ensemble",
+      "reports",
+      "configs",
+      "Tools"
+    ],
+    "missing_dirs": [
+      "eval/metrics",
+      "eval/holdouts"
+    ],
+    "present_files": [
+      "configs/experiment.yml",
+      "configs/scoring.yml",
+      "configs/indicators.yml",
+      "configs/baselines.yml",
+      "data/vintages.md",
+      "data/revisions.md",
+      "Tools/run_step_15_learn_ensemble.py",
+      "Tools/make_stacking_features_from_perf.py",
+      "Tools/discover_make_perf.py",
+      "Tools/make_perf_from_struct_quantiles.py",
+      "Tools/acceptance_gate.ps1",
+      "Tools/make_mini_report.py",
+      "Tools/make_release_bundle.py",
+      "Tools/clean_metrics_files.py",
+      "Tools/compute_composite_from_summaries.py",
+      "Tools/make_composite_plot.py",
+      "Tools/canonicalize_coverage.py",
+      "Tools/validate_schema.py"
+    ],
+    "missing_files": [
+      "Tools/run_step_15_apply_weights.py",
+      "eval/evaluator_code.py"
+    ]
+  },
+  "eval_results": {
+    "struct_files": [
+      {
+        "path": "eval\\results\\hsm_struct_1985.csv",
+        "model": "hsm",
+        "origin_year": 1985,
+        "indicators_count": 3,
+        "horizons_count": 15
+      }
+    ],
+    "models": [
+      "hsm"
+    ],
+    "origin_years": [
+      1985
+    ],
+    "indicators": [
+      "trust_media_pct",
+      "union_membership_rate",
+      "vep_turnout_pct"
+    ],
+    "horizons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "files_present": {
+      "perf_by_model": false,
+      "stacking_features": false,
+      "quantiles_by_model": false,
+      "event_probs_by_model": false,
+      "realized_by_origin": false
+    },
+    "files_missing": []
+  },
+  "perf_by_model": {},
+  "stacking_features": {},
+  "standard_files_present": {
+    "perf_by_model": "C:\\Users\\Owner\\Downloads\\forecast_experiment\\eval\\results\\perf_by_model.csv",
+    "stacking_features": "C:\\Users\\Owner\\Downloads\\forecast_experiment\\eval\\results\\stacking_features.csv",
+    "quantiles_by_model": "C:\\Users\\Owner\\Downloads\\forecast_experiment\\eval\\results\\quantiles_by_model.csv",
+    "event_probs_by_model": "C:\\Users\\Owner\\Downloads\\forecast_experiment\\eval\\results\\event_probs_by_model.csv",
+    "realized_by_origin": "C:\\Users\\Owner\\Downloads\\forecast_experiment\\eval\\results\\realized_by_origin.csv"
+  }
+}

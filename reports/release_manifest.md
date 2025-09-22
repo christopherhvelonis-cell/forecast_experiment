@@ -1,6 +1,6 @@
-# Release Manifest — step3
+# Release Manifest — v1.2-ew-ensemble
 
-Created: 2025-09-14 01:21:46  
+Created: 2025-09-22 02:09:46  
 Platform: Windows-10-10.0.19045-SP0  
 Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
 
@@ -14,6 +14,8 @@ Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bi
 | FINAL_hsm_chatgpt_1995.csv | `991f19e72828ae0841aea316cf80819f00597cd3cb15e6463d5c005e6d493027` |
 | final_report.md | `78742460e150e6125acb2da724ae3710551e284a9a559d9e359a885880ae71c2` |
 | forecast_experiment_1995_a085_equal.zip | `34968a9c2d3478f1aebaf7dc68ac82a6b2acc77af6460c07d6c04000d2771278` |
+| forecast_experiment_preview_20250920-210427.zip | `396266d636552cb799c4819370ef634a95fb5d4bb5cd9367349bfae55c5dc127` |
+| forecast_experiment_preview_20250922-015337.zip | `3598bbd43f05cded336137d5bf8c0cc032d49a2b2a3d04301d473f5b0de7b3f8` |
 | hsm_chatgpt_1995_audit.md | `2dc3b6551223a2fbb329498a7c7f86cd73e8744f80a55b3f760f9b30038c1eb1` |
 | release_manifest.md | `3732bd596f298c22058f42a4153e2a9eaebe0c209f1b5715734187020f7664b2` |
 
@@ -32,23 +34,16 @@ Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bi
 ## Library Versions (`pip freeze`)
 
 ```
-contourpy==1.3.3
-cycler==0.12.1
-et_xmlfile==2.0.0
-fonttools==4.59.2
-kiwisolver==1.4.9
-matplotlib==3.10.6
-numpy==2.3.3
-openpyxl==3.1.5
-packaging==25.0
+joblib==1.5.2
+numpy==1.26.4
 pandas==2.3.2
-patsy==1.0.1
-pillow==11.3.0
-pyparsing==3.2.4
+pyarrow==21.0.0
 python-dateutil==2.9.0.post0
 pytz==2025.2
+scikit-learn==1.5.2
 scipy==1.16.2
 six==1.17.0
-statsmodels==0.14.5
+tabulate==0.9.0
+threadpoolctl==3.6.0
 tzdata==2025.2
 ```

@@ -8,8 +8,8 @@
 |  | accept | Composite value present (FINAL_2000) | True | composite_mean=0.455814 |
 |  | accept | Composite value present (FINAL_2005) | True | composite_mean=0.45 |
 |  | accept | Composite value present (FINAL_2010) | True | composite_mean=0.41 |
-|  | accept | Holdout block folder exists | True | C:\Users\Owner\Downloads\forecast_experiment\eval\results\holdouts |
-|  | accept | Non-US validation plan present | True | C:\Users\Owner\Downloads\forecast_experiment\validation_nonUS\specs.json |
+|  | accept | Holdout block folder exists | True | .\eval\results\holdouts |
+|  | accept | Non-US validation plan present | True | .\validation_nonUS\specs.json |
 |  | accept | 50% coverage abs error <= 5pp | True | 0.00 |
 |  | accept | 90% coverage abs error <= 5pp | True | 0.00 |
 |  | accept | 50% coverage abs error <= 5pp | True | 0.00 |
