@@ -1,7 +1,19 @@
-﻿{
-  "regions": [
-    {"name": "WEurope_1945_1965", "mapping": "US_indicator_X -> Proxy_A", "confidence": "H"},
-    {"name": "India_1947_1967",   "mapping": "US_indicator_Y -> Proxy_B", "confidence": "M"}
+{
+  "mappings": [
+    {
+      "us_indicator": "ba_plus_25plus_share",
+      "region": "Japan",
+      "period": "1950-1970",
+      "confidence": "H",
+      "proxy_series_path": "validation_nonUS/proxies_japan_ba.csv"
+    },
+    {
+      "us_indicator": "trust_media_pct",
+      "region": "Brazil",
+      "period": "1995-2005",
+      "confidence": "M",
+      "proxy_series_path": "validation_nonUS/proxies_brazil_tm.csv"
+    }
   ],
-  "checks": ["coverage_50", "coverage_90", "PIT_uniform", "Brier_reliability"]
+  "coverage_targets": { "50": 0.5, "90": 0.9 }
 }
