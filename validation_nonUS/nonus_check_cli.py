@@ -1,133 +1,183 @@
-#!/usr/bin/env python
-import argparse, os, pandas as pd, numpy as np
+# validation_nonUS/nonus_check_cli.py
+#!/usr/bin/env python3
+import argparse, os, sys, re
+import pandas as pd
 
-ALIASES = {
-    "q50":  ["q50","p50","median","Q50","P50"],
-    "q25":  ["q25","p25","quantile_25","Q25","P25"],
-    "q75":  ["q75","p75","quantile_75","Q75","P75"],
-    "q05":  ["q05","q5","p05","p5","quantile_5","quantile_05","Q05","Q5","P05","P5"],
-    "q95":  ["q95","p95","quantile_95","Q95","P95"],
-    "lo50": ["lo_50","lo50","l50","lower50","lower_50","band50_lo","low50","lo-50"],
-    "hi50": ["hi_50","hi50","u50","upper50","upper_50","band50_hi","high50","hi-50"],
-    "lo90": ["lo_90","lo90","l90","lower90","lower_90","band90_lo","low90","lo-90"],
-    "hi90": ["hi_90","hi90","u90","upper90","upper_90","band90_hi","high90","hi-90"],
+BAND_ALIASES = {
+    "lo90": ["lo90","lower90","low90","l90","p05","q05","quantile_0.05","lo_90","lower_90","__lo_90__"],
+    "hi90": ["hi90","upper90","high90","h90","p95","q95","quantile_0.95","hi_90","upper_90","__hi_90__"],
+    "lo50": ["lo50","lower50","low50","l50","p25","q25","quantile_0.25","lo_50","lower_50","__lo_50__","__lo_50"],
+    "hi50": ["hi50","upper50","high50","h50","p75","q75","quantile_0.75","hi_50","upper_50","__hi_50__","__hi_50"],
 }
 
-def pick_name(columns, alias_list):
-    cols = set(columns)
-    for a in alias_list:
-        if a in cols: return a
-    lower = {c.lower(): c for c in columns}
-    for a in alias_list:
-        if a.lower() in lower: return lower[a.lower()]
+def norm(s: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(s).strip().lower())
+
+def find_col(df: pd.DataFrame, explicit: str|None, candidates: list[str]) -> str|None:
+    if explicit:
+        # exact, case-insensitive, fuzzy
+        if explicit in df.columns: return explicit
+        lower = {c.lower(): c for c in df.columns}
+        if explicit.lower() in lower: return lower[explicit.lower()]
+        fmap = {norm(c): c for c in df.columns}
+        if norm(explicit) in fmap: return fmap[norm(explicit)]
+    # aliases
+    for c in candidates:
+        if c in df.columns: return c
+    lower = {c.lower(): c for c in df.columns}
+    for c in candidates:
+        if c.lower() in lower: return lower[c.lower()]
+    fmap = {norm(c): c for c in df.columns}
+    for c in candidates:
+        if norm(c) in fmap: return fmap[norm(c)]
     return None
 
-def detect_or_synthesize_bands(df):
-    cols = list(df.columns)
-    q50 = pick_name(cols, ALIASES["q50"])
-    lo50 = pick_name(cols, ALIASES["lo50"]); hi50 = pick_name(cols, ALIASES["hi50"])
-    lo90 = pick_name(cols, ALIASES["lo90"]); hi90 = pick_name(cols, ALIASES["hi90"])
-    q25 = pick_name(cols, ALIASES["q25"]);  q75 = pick_name(cols, ALIASES["q75"])
-    q05 = pick_name(cols, ALIASES["q05"]);  q95 = pick_name(cols, ALIASES["q95"])
+def load_final(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path)
+    # Expect columns: year, indicator, horizon, q05,q50,q95,truth (truth optional)
+    # Accept also: lo90/hi90, lo50/hi50 (but we only need q50 for center if present)
+    need = {"indicator","horizon"}
+    if not need.issubset(df.columns):
+        raise ValueError(f"[final] missing columns {need - set(df.columns)} in {path}")
+    # ensure types
+    df["indicator"] = df["indicator"].astype(str)
+    df["horizon"] = pd.to_numeric(df["horizon"], errors="coerce").astype("Int64")
+    return df
 
-    # 50% from q25/q75 if needed
-    if (lo50 is None or hi50 is None) and (q25 and q75):
-        df["__lo_50__"] = df[q25]; df["__hi_50__"] = df[q75]
-        lo50, hi50 = "__lo_50__", "__hi_50__"
+def load_proxy(path: str, target_indicator: str, assume_horizons: int|None) -> tuple[pd.DataFrame, dict]:
+    df = pd.read_csv(path)
+    orig_cols = df.columns.tolist()
 
-    # 90% from q05/q95 if needed
-    if (lo90 is None or hi90 is None) and (q05 and q95):
-        df["__lo_90__"] = df[q05]; df["__hi_90__"] = df[q95]
-        lo90, hi90 = "__lo_90__", "__hi_90__"
+    # indicator: if absent, add; otherwise coerce to target
+    if "indicator" not in df.columns:
+        df["indicator"] = target_indicator
+    else:
+        df["indicator"] = target_indicator
 
-    # Accept if we have at least one band (50 or 90)
-    if (lo50 is None or hi50 is None) and (lo90 is None or hi90 is None):
-        raise ValueError(
-            "Could not detect 50% or 90% bands. "
-            f"Available columns: {list(df.columns)}\n"
-            "Need lo_50/hi_50 (or q25/q75) and/or lo_90/hi_90 (or q05/q95)."
-        )
-    return q50, lo50, hi50, lo90, hi90
+    # horizon: if absent and user provided assume_horizons, synthesize 1..N
+    if "horizon" not in df.columns and assume_horizons:
+        n = int(assume_horizons)
+        if len(df) == n:
+            df["horizon"] = range(1, n+1)
+        else:
+            # best-effort: make horizons 1..len(df)
+            df["horizon"] = range(1, len(df)+1)
+    elif "horizon" not in df.columns:
+        # still try to recover from a 'year' column by ordering
+        if "year" in df.columns:
+            df = df.sort_values("year").copy()
+            df["horizon"] = range(1, len(df)+1)
+        else:
+            # we will fail later if horizon still missing
+            pass
+
+    # detect bands
+    lo90 = find_col(df, None, BAND_ALIASES["lo90"])
+    hi90 = find_col(df, None, BAND_ALIASES["hi90"])
+    lo50 = find_col(df, None, BAND_ALIASES["lo50"])
+    hi50 = find_col(df, None, BAND_ALIASES["hi50"])
+
+    info = dict(
+        orig_cols=orig_cols,
+        resolved=dict(lo90=lo90, hi90=hi90, lo50=lo50, hi50=hi50),
+        n_rows=len(df)
+    )
+
+    # rename if present
+    ren = {}
+    if lo90: ren[lo90] = "lo90"
+    if hi90: ren[hi90] = "hi90"
+    if lo50: ren[lo50] = "lo50"
+    if hi50: ren[hi50] = "hi50"
+    if ren:
+        df = df.rename(columns=ren)
+
+    have_90 = {"lo90","hi90"}.issubset(df.columns)
+    have_50 = {"lo50","hi50"}.issubset(df.columns)
+    if not (have_90 or have_50):
+        raise ValueError("[nonUS] Proxy file has no usable band columns. "
+                         "Provide 90% (lo90/hi90) or 50% (lo50/hi50) bands, or run your normalizer.")
+
+    # coerce numerics & clean
+    for c in ["horizon","lo90","hi90","lo50","hi50"]:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors="coerce")
+    if "horizon" not in df.columns:
+        raise ValueError("[nonUS] Proxy has no 'horizon' even after recovery. "
+                         "Re-run with --assume_horizons 15 (or actual N).")
+
+    # keep only rows with at least one band pair
+    keep = df.copy()
+    if have_90:
+        keep = keep[keep["lo90"].notna() & keep["hi90"].notna()]
+    elif have_50:
+        keep = keep[keep["lo50"].notna() & keep["hi50"].notna()]
+
+    keep["horizon"] = keep["horizon"].astype("Int64")
+
+    msg = (f"[nonUS] Proxy summary → rows={len(df)} | usable_rows={len(keep)} | "
+           f"bands: lo50={have_50} lo90={have_90} | "
+           f"resolved={info['resolved']} | columns={orig_cols}")
+    print(msg)
+
+    return keep, info
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--final_calibrated_csv", required=True)
-    ap.add_argument("--proxy_csv", required=True)      # columns: year,value,indicator,region
+    ap.add_argument("--proxy_csv", required=True)
     ap.add_argument("--origin", type=int, required=True)
     ap.add_argument("--out_dir", required=True)
+    ap.add_argument("--target_indicator", default="trust_media_pct",
+                    help="FINAL indicator name to compare against (default trust_media_pct)")
+    ap.add_argument("--assume_horizons", type=int, default=15,
+                    help="If proxy lacks 'horizon', synthesize 1..N (default 15)")
     args = ap.parse_args()
 
+    final = load_final(args.final_calibrated_csv)
+    final = final[final["indicator"].astype(str) == args.target_indicator].copy()
+    final = final[final["horizon"].notna()].copy()
+    final["horizon"] = final["horizon"].astype("Int64")
+
+    proxy, info = load_proxy(args.proxy_csv, args.target_indicator, args.assume_horizons)
+
+    if proxy.empty:
+        raise ValueError("[nonUS] After cleaning, proxy has no usable rows.")
+
+    # pick which bands to use (prefer 90%, else 50%)
+    band_pair = ("lo90","hi90") if {"lo90","hi90"}.issubset(proxy.columns) else ("lo50","hi50")
+    lo_col, hi_col = band_pair
+
+    # merge on indicator + horizon
+    m = (final[["indicator","horizon","q50"]]
+         .merge(proxy[["indicator","horizon",lo_col,hi_col]],
+                on=["indicator","horizon"], how="inner"))
+
+    if m.empty:
+        raise ValueError(f"[nonUS] After merge, no rows overlapped on indicator/horizon.\n"
+                         f"Target indicator: {args.target_indicator}\n"
+                         f"FINAL horizons present: {sorted(final['horizon'].dropna().unique().tolist())[:10]} ...\n"
+                         f"Proxy horizons present: {sorted(proxy['horizon'].dropna().unique().tolist())[:10]} ...")
+
+    # coverage check: center (q50) within band
+    m["covered"] = (m["q50"] >= m[lo_col]) & (m["q50"] <= m[hi_col])
+
+    # write outputs
     os.makedirs(args.out_dir, exist_ok=True)
+    pt_path = os.path.join(args.out_dir, "coverage_points_nonUS.csv")
+    sm_path = os.path.join(args.out_dir, "coverage_summary_nonUS.csv")
 
-    us = pd.read_csv(args.final_calibrated_csv)
-    px = pd.read_csv(args.proxy_csv)
+    m[["indicator","horizon","q50",lo_col,hi_col,"covered"]].to_csv(pt_path, index=False)
 
-    if "indicator" not in us.columns:
-        raise ValueError("FINAL CSV must include 'indicator' column.")
+    summary = (m.assign(n=1)
+                 .groupby(["indicator"])
+                 .agg(n_obs=("n","sum"),
+                      share_covered=("covered","mean"))
+                 .reset_index())
+    summary.to_csv(sm_path, index=False)
 
-    # Horizon
-    hcol = "horizon" if "horizon" in us.columns else None
-    if hcol is None:
-        for c in ["lead","step","h","H"]:
-            if c in us.columns: hcol = c
-        if hcol is None:
-            if "year" in us.columns:
-                us["horizon"] = us["year"] - args.origin; hcol = "horizon"
-            else:
-                raise ValueError("Could not find/construct a 'horizon' column in FINAL CSV.")
-
-    q50, lo50, hi50, lo90, hi90 = detect_or_synthesize_bands(us)
-    print(f"[nonUS] Detected bands → lo50={lo50}, hi50={hi50}, lo90={lo90}, hi90={hi90}")
-
-    # Proxy horizons
-    need_px = {"year","value","indicator","region"}
-    if not need_px.issubset(px.columns):
-        raise ValueError(f"Proxy CSV must have columns {need_px}, found {list(px.columns)}")
-    px["horizon"] = px["year"] - args.origin
-    px = px[(px["horizon"]>=1) & (px["horizon"]<=15)].copy()
-
-    # Join
-    keep_cols = ["indicator", hcol]
-    for c in [lo50, hi50, lo90, hi90]:
-        if c is not None and c not in keep_cols:
-            keep_cols.append(c)
-    us_sub = us[keep_cols].copy().rename(columns={hcol:"horizon"})
-    df = px.merge(us_sub, on=["indicator","horizon"], how="inner")
-
-    if df.empty:
-        raise ValueError(
-            "After merge, no rows had available bands for these proxy horizons.\n"
-            f"Proxy indicators: {px['indicator'].unique().tolist()}\n"
-            f"FINAL indicators: {us['indicator'].unique().tolist()}"
-        )
-
-    # Coverage rows
-    out = []
-    for _,r in df.iterrows():
-        base = {"region": r["region"], "indicator": r["indicator"], "horizon": int(r["horizon"])}
-        v = r["value"]
-        if (lo50 in df.columns) and (hi50 in df.columns) and pd.notna(r.get(lo50)) and pd.notna(r.get(hi50)):
-            out.append({**base, "level": 0.5, "covered": int((v >= r[lo50]) and (v <= r[hi50]))})
-        if (lo90 in df.columns) and (hi90 in df.columns) and pd.notna(r.get(lo90)) and pd.notna(r.get(hi90)):
-            out.append({**base, "level": 0.9, "covered": int((v >= r[lo90]) and (v <= r[hi90]))})
-
-    points = pd.DataFrame(out)
-    if points.empty:
-        raise ValueError("No usable coverage points could be computed (bands missing or NaN).")
-
-    points = points.sort_values(["indicator","horizon","level"]).reset_index(drop=True)
-    points.to_csv(os.path.join(args.out_dir, "coverage_points_nonUS.csv"), index=False)
-
-    # ---- Backward-compatible aggregation (no tuple kwargs) ----
-    gb = points.groupby(["region","indicator","level"])["covered"]
-    summ = gb.sum().rename("covered").reset_index()
-    tot  = gb.count().rename("total").reset_index()
-    summ = summ.merge(tot, on=["region","indicator","level"])
-    summ["coverage_rate"] = summ["covered"] / summ["total"]
-    summ.to_csv(os.path.join(args.out_dir, "coverage_summary_nonUS.csv"), index=False)
-
-    print("Wrote:", os.path.join(args.out_dir, "coverage_points_nonUS.csv"))
-    print("Wrote:", os.path.join(args.out_dir, "coverage_summary_nonUS.csv"))
+    print(f"Wrote: {pt_path}")
+    print(f"Wrote: {sm_path}")
 
 if __name__ == "__main__":
     main()
