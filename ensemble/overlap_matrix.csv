@@ -1,4 +1,4 @@
 indicator_A,indicator_B,median_dir_agree,band_overlap_50,band_overlap_90,h_first,h_last
-trust_media_pct,union_membership_rate,1.0,,0.0,1,15
-trust_media_pct,vep_turnout_pct,1.0,,1.0,1,15
-union_membership_rate,vep_turnout_pct,1.0,,0.0,1,15
+trust_media_pct,union_membership_rate,1.0,0.0,0.0,1,15
+trust_media_pct,vep_turnout_pct,1.0,0.9333333333333333,1.0,1,15
+union_membership_rate,vep_turnout_pct,1.0,0.0,0.0,1,15
