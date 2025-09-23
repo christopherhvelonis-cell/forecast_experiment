@@ -1,6 +1,6 @@
-# Release Manifest — v1.4-final
+# Release Manifest — v1.4.1-final
 
-Created: 2025-09-22 21:41:34  
+Created: 2025-09-23 01:59:54  
 Platform: Windows-10-10.0.19045-SP0  
 Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]
 
@@ -18,6 +18,7 @@ Python: 3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bi
 | forecast_experiment_preview_20250922-015337.zip | `3598bbd43f05cded336137d5bf8c0cc032d49a2b2a3d04301d473f5b0de7b3f8` |
 | forecast_experiment_preview_20250922-175141.zip | `2043e22258cd3983074ba35d21636225027d2bb49f0af4c76eefe59cc924b6b6` |
 | forecast_experiment_preview_20250922-213350.zip | `dccf08330a895050cd33b72b1b7b2856949e9d395e1f9184261cce91ba120a88` |
+| forecast_experiment_preview_20250922-214134.zip | `f518e87c3f33b4a20923485d4985322087e9b8d2d0f27679b151ecd15e0ff613` |
 | hsm_chatgpt_1995_audit.md | `2dc3b6551223a2fbb329498a7c7f86cd73e8744f80a55b3f760f9b30038c1eb1` |
 | release_manifest.md | `3732bd596f298c22058f42a4153e2a9eaebe0c209f1b5715734187020f7664b2` |
 

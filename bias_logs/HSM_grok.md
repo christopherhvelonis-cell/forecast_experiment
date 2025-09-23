@@ -1,14 +1,13 @@
-# Bias Audit – HSM_grok
-
+﻿# Bias Audit – HSM_grok
 ## Diversity & Framing
-- Sources reviewed: Coverage 1995–2010, ECC paths, calibration tables.
-- Risks flagged: None material.
-- Subgroup coverage issues: None observed.
+- Sources reviewed: parallel to HSM_chatgpt with alternative embeddings.
+- Risks flagged: representation drift between vintages; media-topic distribution bias.
+- Subgroup coverage issues: limited early-year subgroup signal.
 
 ## Error Tables
-- Group 1: No systematic divergence.
-- Group 2: No subgroup underperformance.
+- Group 1: Under-dispersion on media-trust at h≥10.
+- Group 2: Mild negative bias on union membership around structural breaks.
 
 ## Mitigation
-- Actions: No corrective action required.
+- Actions: break-aware refits; isotonic reliability correction; PIT monitoring.
 - Status: PASS

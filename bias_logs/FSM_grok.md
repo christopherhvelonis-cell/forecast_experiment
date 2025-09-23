@@ -1,14 +1,13 @@
-# Bias Audit – FSM_grok
-
+﻿# Bias Audit – FSM_grok
 ## Diversity & Framing
-- Sources reviewed: Coverage 1995–2010, ECC paths, calibration tables.
-- Risks flagged: None material.
-- Subgroup coverage issues: None observed.
+- Sources reviewed: same shock library as FSM_chatgpt; alternative event extraction.
+- Risks flagged: event polarity misclassification; regime-change sensitivity.
+- Subgroup coverage issues: not applicable.
 
 ## Error Tables
-- Group 1: No systematic divergence.
-- Group 2: No subgroup underperformance.
+- Group 1: Shock clustering years show under-coverage at 90%.
+- Group 2: Calm years slightly over-wide.
 
 ## Mitigation
-- Actions: No corrective action required.
+- Actions: Schaake/ECC for dependence; EnbPI conformal for coverage; document limits.
 - Status: PASS
