@@ -1,0 +1,3 @@
+﻿weights_file = .\ensemble\results_fforma\weights_by_h_median.csv
+sha256       = 773C9EE0CF1F3CC60D7EA801601838F16378750F342F20352D7BF7DF633444B6
+timestamp_utc= 2025-09-26T02:26:10Z

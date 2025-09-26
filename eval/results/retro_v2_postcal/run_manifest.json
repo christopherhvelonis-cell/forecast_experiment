@@ -1,0 +1,27 @@
+{
+  "origins": [
+    "1985",
+    "1990",
+    "2015",
+    "2020"
+  ],
+  "horizons": [
+    1,
+    15
+  ],
+  "scores": [
+    "crps",
+    "brier"
+  ],
+  "lambda_grid": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "configs": [
+    "configs/experiment.yml",
+    "configs/scoring.yml"
+  ],
+  "scenarios_years": 40,
+  "use_calibrated": true
+}

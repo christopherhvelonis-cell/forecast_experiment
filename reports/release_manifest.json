@@ -1,0 +1,57 @@
+{
+  "tag": "v1.6-final",
+  "timestamp_utc": "2025-09-26T02:26:10Z",
+  "git_commit": "",
+  "artifacts": [
+    {
+      "file": "eval/results/retro_v2_postcal/metrics_1985.csv",
+      "bytes": 2109,
+      "sha256": "a557a870317bff048557524d6d99c20186fe324e362c74ac68e85ea1aac156d3"
+    },
+    {
+      "file": "eval/results/retro_v2_postcal/metrics_1990.csv",
+      "bytes": 2094,
+      "sha256": "3e2061298faf42499625a6383ff4fd7a065d1ab0d6232c13d1ef284bb4f77143"
+    },
+    {
+      "file": "eval/results/retro_v2_postcal/metrics_2015.csv",
+      "bytes": 2142,
+      "sha256": "0c12f5ed5d7b4c37ccbbd4cb2f2abc2cf342327b312acf0a9b3a1f337dc83072"
+    },
+    {
+      "file": "eval/results/retro_v2_postcal/metrics_2020.csv",
+      "bytes": 2098,
+      "sha256": "0760216cccd31ed32fe1d8b044ac70cf3b107c6afc7018dd50595926c2ac6e53"
+    },
+    {
+      "file": "eval/results/significance_dm_prepost.csv",
+      "bytes": 2708,
+      "sha256": "5a5295da7a5adecc83edc25f471b5b345584e895c78c861b6838577b518f9c69"
+    },
+    {
+      "file": "eval/results/ensemble_retro_v2_postcal/metrics_ENSEMBLE.csv",
+      "bytes": 8749,
+      "sha256": "78d638b12c5295162b3f578a15f7d9aefac22591d5539e38eb30d706b7175f36"
+    },
+    {
+      "file": "ensemble/results_fforma/summary_by_h_crps.csv",
+      "bytes": 757,
+      "sha256": "d4d63850a3439a2140e7780c8c36f83557d0c8626272c6f2e3d4bace123fd03d"
+    },
+    {
+      "file": "ensemble/results_fforma/weights_by_h_median.csv",
+      "bytes": 420,
+      "sha256": "773c9ee0cf1f3cc60d7ea801601838f16378750f342f20352d7bf7df633444b6"
+    },
+    {
+      "file": "reports/final_report.md",
+      "bytes": 6131,
+      "sha256": "14e058e44930bed048a4aa01dbb9166cc50b6f4ea73ab2c4529a4cfdec6abfd9"
+    },
+    {
+      "file": "README.md",
+      "bytes": 904,
+      "sha256": "b3fa3e9bbc3ca91e65acea981aa094a8ffb20625151886254986656624b54be1"
+    }
+  ]
+}

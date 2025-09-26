@@ -1,19 +1,11 @@
 {
-  "mappings": [
-    {
-      "us_indicator": "ba_plus_25plus_share",
-      "region": "Japan",
-      "period": "1950-1970",
-      "confidence": "H",
-      "proxy_series_path": "validation_nonUS/proxies_japan_ba.csv"
-    },
-    {
-      "us_indicator": "trust_media_pct",
-      "region": "Brazil",
-      "period": "1995-2005",
-      "confidence": "M",
-      "proxy_series_path": "validation_nonUS/proxies_brazil_tm.csv"
-    }
+  "regions": [
+    {"id": "weurope",    "years": [1945, 1965], "confidence": "M"},
+    {"id": "japan",      "years": [1950, 1970], "confidence": "M"},
+    {"id": "brazil",     "years": [1985, 2005], "confidence": "M"},
+    {"id": "india",      "years": [1947, 1967], "confidence": "L"},
+    {"id": "southafrica","years": [1994, 2014], "confidence": "L"}
   ],
-  "coverage_targets": { "50": 0.5, "90": 0.9 }
+  "reuse_calibration": true,
+  "coverage_targets": { "p50": 0.50, "p90": 0.90, "tolerance_pp": 5 }
 }

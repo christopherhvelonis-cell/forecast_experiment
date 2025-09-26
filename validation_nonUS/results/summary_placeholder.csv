@@ -1,0 +1,6 @@
+region,years_start,years_end,status,reuse_calibration
+weurope,1945,1965,PENDING_DATA,True
+japan,1950,1970,PENDING_DATA,True
+brazil,1985,2005,PENDING_DATA,True
+india,1947,1967,PENDING_DATA,True
+southafrica,1994,2014,PENDING_DATA,True
