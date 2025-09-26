@@ -1,32 +1,32 @@
 {
   "tag": "v1.6-final",
-  "timestamp_utc": "2025-09-26T02:52:45Z",
+  "timestamp_utc": "2025-09-26T03:33:02Z",
   "git_commit": "",
   "artifacts": [
     {
       "file": "eval/results/retro_v2_postcal/metrics_1985.csv",
-      "bytes": 2109,
-      "sha256": "a557a870317bff048557524d6d99c20186fe324e362c74ac68e85ea1aac156d3"
+      "bytes": 2093,
+      "sha256": "3cff88bbbb9db3011c2b54309a1413794e142058bae5c0170d09568ebe5f5450"
     },
     {
       "file": "eval/results/retro_v2_postcal/metrics_1990.csv",
-      "bytes": 2094,
-      "sha256": "3e2061298faf42499625a6383ff4fd7a065d1ab0d6232c13d1ef284bb4f77143"
+      "bytes": 2078,
+      "sha256": "e1871608434e3a48f56c4034fd971ab32a2c4c40badbcde4803a2303f4d42881"
     },
     {
       "file": "eval/results/retro_v2_postcal/metrics_2015.csv",
-      "bytes": 2142,
-      "sha256": "0c12f5ed5d7b4c37ccbbd4cb2f2abc2cf342327b312acf0a9b3a1f337dc83072"
+      "bytes": 2126,
+      "sha256": "f81cc63621e797aa05f40667194587f3322be7d8ae2ba96968b6657a90aef176"
     },
     {
       "file": "eval/results/retro_v2_postcal/metrics_2020.csv",
-      "bytes": 2098,
-      "sha256": "0760216cccd31ed32fe1d8b044ac70cf3b107c6afc7018dd50595926c2ac6e53"
+      "bytes": 2082,
+      "sha256": "5f51202de22285d1a041e7252d672e88e87047df4f71c3b5d24f92f9a51c6aa7"
     },
     {
       "file": "eval/results/significance_dm_prepost.csv",
-      "bytes": 2708,
-      "sha256": "5a5295da7a5adecc83edc25f471b5b345584e895c78c861b6838577b518f9c69"
+      "bytes": 2692,
+      "sha256": "a20db3a069d477a0cccf8f127b46beaedfa83f212afde36726d76bf6cb6726dc"
     },
     {
       "file": "eval/results/ensemble_retro_v2_postcal/metrics_ENSEMBLE.csv",
@@ -35,23 +35,23 @@
     },
     {
       "file": "ensemble/results_fforma/summary_by_h_crps.csv",
-      "bytes": 757,
-      "sha256": "d4d63850a3439a2140e7780c8c36f83557d0c8626272c6f2e3d4bace123fd03d"
+      "bytes": 741,
+      "sha256": "d72a640cc48e279066011f3eb68ff4d7d691bf073b21fbf08091c4f915a6101c"
     },
     {
       "file": "ensemble/results_fforma/weights_by_h_median.csv",
-      "bytes": 420,
-      "sha256": "773c9ee0cf1f3cc60d7ea801601838f16378750f342f20352d7bf7df633444b6"
+      "bytes": 404,
+      "sha256": "04a8d9b8ce5ba98335d585cb6331c170937c1ee6f2b52d2b6ce68d82bf4d0d6a"
     },
     {
       "file": "reports/final_report.md",
-      "bytes": 6131,
-      "sha256": "14e058e44930bed048a4aa01dbb9166cc50b6f4ea73ab2c4529a4cfdec6abfd9"
+      "bytes": 6113,
+      "sha256": "7ae4c3398a78ec0f382fae76beb8a2c66eaba2b630703d3e6cd414cd5c2df804"
     },
     {
       "file": "README.md",
-      "bytes": 904,
-      "sha256": "b3fa3e9bbc3ca91e65acea981aa094a8ffb20625151886254986656624b54be1"
+      "bytes": 1153,
+      "sha256": "8936303742917f09bd7c9ca977f7981b4f909d9790d75fce72cffd89fa11b0c8"
     }
   ]
 }
