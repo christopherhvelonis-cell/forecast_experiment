@@ -20,3 +20,9 @@ This repository contains calibrated forecasts for origin 1995 and ensemble outpu
 ## Scenario Materials
 - reports\scenarios\baseline.md | optimistic.md | stress.md | wildcard.md
 - reports\scenarios\overlap_matrix.csv
+### Switch ensemble metric
+- Use CRPS:  Use-Weights crps
+- Use Brier: Use-Weights brier
+
+Outputs go to eval/results/ensemble_retro_v2_postcal/metrics_ENSEMBLE.csv.
+Provenance: eval/results/ensemble_retro_v2_postcal/ENSEMBLE_SOURCE.txt and eports/release_manifest.json.
